@@ -3,24 +3,30 @@ import java.util.Scanner;
 public class CrapsGame {
     public static void main(String[] args) {
         Random random = new Random();
-        int roll = random.nextInt(12) + 2;
-        int playerRoll= 1;
+        int die1 = random.nextInt(6) + 1;
+        int die2 = random.nextInt(6) + 1;
+        int crapsRoll;
+        String playerRoll= "R" ;
+        boolean playAgain = true;
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to the Craps Game!");
+        System.out.println("To win roll a 7 or 11.");
         do {
-            System.out.println("Press 1 to roll.");
-            playerRoll = sc.nextInt();
-            System.out.println("Roll is: " + roll);
-            if (roll == 2 || roll == 3 || roll == 12) {
-                System.out.println("You crapped out! You LOST!");
-            }
-            if (roll == 7 || roll == 11) {
-                System.out.println("You rolled a natural! You WIN!");
-            }
-        } while (roll == 4 || roll == 5 || roll == 6 || roll == 8 || roll == 9 || roll == 10 || roll == 11);
-        {System.out.println("Play again? (Y/N)");}
-
-
-
+            do {
+                System.out.println("Press R to roll.");
+                playerRoll = sc.nextLine();
+                crapsRoll = die1 + die2;
+                System.out.println("Roll is: " + crapsRoll);
+                if (crapsRoll == 2 || crapsRoll == 3 || crapsRoll == 12) {
+                    System.out.println("You crapped out! You LOST!");
+                }
+                if (crapsRoll == 7 || crapsRoll == 11) {
+                    System.out.println("You rolled a natural! You WIN!");
+                }
+            } while (crapsRoll == 4 || crapsRoll == 5 || crapsRoll == 6 || crapsRoll == 8 || crapsRoll == 9 || crapsRoll == 10 || crapsRoll == 11);
+            System.out.println ("Play again? (Y/N)");
+            playAgain = sc.nextLine().equalsIgnoreCase("Y");
+        } while (playAgain);
+        sc.close();
     }
 }
