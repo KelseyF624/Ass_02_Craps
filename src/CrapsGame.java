@@ -2,18 +2,28 @@ import java.util.Random;
 import java.util.Scanner;
 public class CrapsGame {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         int roll, rollAgain;
-        String playerRoll;
+        int die1 = 0;
+        int die2 = 0;
+        int rollValue = 0;
+        int point = 0;
         boolean playAgain = true;
+        boolean rollingForPoints = false;
+        Random rnd = new Random();
+        Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to the Craps Game!");
         System.out.println("To win roll a 7 or 11.");
         do {
-            int die1 = (int) (Math.random()* 6 + 1);
-            int die2 = (int) (Math.random()* 6 + 1);
+            Default:
+            System.out.println("Roll of " + rollValue);
+            point = rollValue;
+            rollingForPoints = true;
+            System.out.println("Rolling for point " + point);
             do {
-                System.out.println("Press R to roll.");
-                playerRoll = sc.nextLine();
+                die1 = rnd.nextInt(5) + 1;
+                die2 = rnd.nextInt(5)+ 1;
+                rollValue = die1 + die2;
+                switch (rollValue) {};
                 roll = die1 + die2;
                 System.out.println("Roll is: " + roll);
                 if (roll == 2 || roll == 3 || roll == 12) {
